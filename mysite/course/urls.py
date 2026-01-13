@@ -4,20 +4,17 @@ from django.urls import path, include
 
 
 router = routers.SimpleRouter()
-
 router.register(r'users', UserProfileViewSet, basename='users')
 router.register(r'students', StudentViewSet, basename='students')
 
 
 urlpatterns = [
-
-
     path('', include(router.urls)),
     path('category/', CategoryAPIView.as_view(), name='category_list'),
     path('category/<int:pk>/', CategoryDetailAPIView.as_view(), name='category_detail'),
-    path('c/', CourseListAPIView.as_view(), name='course_list'),
-    path('c/<int:pk>/', CourseDetailAPIView.as_view(), name='course_detail'),
-    path('c/create/', CourseDetailUpdateDestroyOwnerAPIView.as_view(), name='course_create'),
+    path('', CourseListAPIView.as_view(), name='course_list'),
+    path('<int:pk>/', CourseDetailAPIView.as_view(), name='course_detail'),
+    path('create/', CourseDetailUpdateDestroyOwnerAPIView.as_view(), name='course_create'),
     path('lesson/', LessonListAPIView.as_view(), name='lesson_list'),
     path('assignment/', AssignmentAPIView.as_view(), name='assignment_list'),
     path('exam/', ExamListAPIView.as_view(), name='exam_list'),

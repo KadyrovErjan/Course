@@ -138,9 +138,10 @@ class CertificateListAPIView(generics.ListAPIView):
     serializer_class = CertificateListSerializers
 
 
-class CourseReviewAPIView(generics.ListAPIView):
+class CourseReviewAPIView(generics.CreateAPIView):
     queryset = CourseReview.objects.all()
     serializer_class = CourseReviewSerializers
+    permission_classes = [permissions.IsAuthenticated]
 
 class CartAPIView(generics.ListAPIView):
     queryset = Cart.objects.all()

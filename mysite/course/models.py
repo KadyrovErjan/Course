@@ -51,6 +51,9 @@ class Category(models.Model):
     def __str__(self):
         return self.category_name
 
+    class Meta:
+        verbose_name = 'категория'
+
 
 class Course(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='course_list')
